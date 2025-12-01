@@ -36,7 +36,7 @@ public class Theatre {
         System.out.println();
 
         System.out.println("Замена актёра в спектакле");
-        show.replaceActor("Лиепа", actor1);
+        show.replaceActor("Лиепа", actor3);
         System.out.println("Обновленный список актёров в спектакле");
         show.printActors();
         System.out.println();
