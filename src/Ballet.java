@@ -1,4 +1,4 @@
-class Ballet extends MusicalShow{
+public class Ballet extends MusicalShow{
     private String choreographer;
 
 

@@ -4,6 +4,7 @@ public class Theatre {
         Actor actor1 = new Actor("Константин", "Хабенский", Gender.MALE, 1.75);
         Actor actor2 = new Actor("Анна", "Павлова", Gender.FEMALE, 1.68);
         Actor actor3 = new Actor("Марис", "Лиепа", Gender.MALE, 1.72);
+        Actor actor4 = new Actor("Борис", "Лиепа", Gender.MALE, 1.80);
 
         Director director1 = new Director("Дмитрий","Бертман", Gender.MALE, 10);
         Director director2 = new Director("Франко", "Дзеффирелли", Gender.MALE,15 );
@@ -18,14 +19,21 @@ public class Theatre {
         Ballet ballet = new Ballet("Лебединое озеро", 180, director1,musicAuthor, librettoBallet,
                 choreographer);
 
+        show.printDirector();
         show.addActor(actor1);
         show.addActor(actor3);
+        show.addActor(actor4);
+        System.out.println();
 
+        opera.printDirector();
         opera.addActor(actor1);
         opera.addActor(actor2);
+        System.out.println();
 
+        ballet.printDirector();
         ballet.addActor(actor2);
         ballet.addActor(actor1);
+        System.out.println();
 
         System.out.println("СПИСКИ ВСЕХ АКТЁРОВ:");
         show.printActors();
@@ -36,7 +44,7 @@ public class Theatre {
         System.out.println();
 
         System.out.println("Замена актёра в спектакле");
-        show.replaceActor("Лиепа", actor3);
+        show.replaceActor("Лиепа", actor2);
         System.out.println("Обновленный список актёров в спектакле");
         show.printActors();
         System.out.println();

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Show {
-    private String title;
-    private int duration;
-    private Director director;
+    protected String title;
+    protected int duration;
+    protected Director director;
     private ArrayList<Actor> listOfActors;
 
     public Show(String title, int duration, Director director) {
@@ -34,17 +34,35 @@ public class Show {
             System.out.println("Ошибка: новый актёр не может быть null");
             return;
         }
+        if (listOfActors.isEmpty()) {
+            System.out.println("Список актёров пуст.");
+            return;
+        }
 
+        int count = 0;
         for (int i = 0; i < listOfActors.size(); i++) {
             Actor current = listOfActors.get(i);
             if (current.getSurname().equals(surname)) {
-                listOfActors.set(i, newActor);
-                System.out.println("Заменил: " + current + " на " + newActor);
-                return;
+                count++;
             }
         }
-        System.out.println("Актёр с фамилией " + surname + " не найден.");
+
+        if (count > 1) {
+            System.out.println("В списке найдено несколько актёров с фамилией " + surname + ". Замена не выполнена.");
+        } else if (count == 1) {
+            for (int i = 0; i < listOfActors.size(); i++) {
+                Actor current = listOfActors.get(i);
+                if (current.getSurname().equals(surname)) {
+                    listOfActors.set(i, newActor);
+                    System.out.println("Заменил: " + current + " на " + newActor);
+                    break;
+                }
+            }
+        } else {
+            System.out.println("Актёр с фамилией " + surname + " не найден.");
+        }
     }
+
 
     public void printActors() {
         System.out.println("Список актёров спектакля '" + title + "':");
@@ -55,6 +73,10 @@ public class Show {
         for (Actor actor : listOfActors) {
             System.out.println(actor);
         }
+    }
+
+    public void printDirector() {
+        System.out.println("Режиссёр спектакля '" + title + "': " + director );
     }
 
     public String getTitle() {

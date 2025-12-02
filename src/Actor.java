@@ -18,22 +18,19 @@ public class Actor extends Person{
 
     @Override
     public String toString() {
-        return getName() + " " + getSurname() + " (рост: " + height + " м)";
+        return super.toString() + " (рост: " + height + " м)";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o))
+            return false;
         Actor actor = (Actor) o;
-        return height == actor.height &&
-                getName().equals(actor.getName()) &&
-                getSurname().equals(actor.getSurname()) &&
-                getGender() == actor.getGender();
+        return height == actor.height;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getSurname(), getGender(), height);
+        return Objects.hash(super.hashCode(), height);
     }
 }
