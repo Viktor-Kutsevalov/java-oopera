@@ -13,9 +13,4 @@ public class Director extends Person{
     public void setNumberOfShows(int numberOfShows) {
         this.numberOfShows = numberOfShows;
     }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

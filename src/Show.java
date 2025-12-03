@@ -4,7 +4,7 @@ public class Show {
     protected String title;
     protected int duration;
     protected Director director;
-    private ArrayList<Actor> listOfActors;
+    protected ArrayList<Actor> listOfActors;
 
     public Show(String title, int duration, Director director) {
         this.title = title;
@@ -40,29 +40,25 @@ public class Show {
         }
 
         int count = 0;
+        int index = -1;
+
         for (int i = 0; i < listOfActors.size(); i++) {
             Actor current = listOfActors.get(i);
             if (current.getSurname().equals(surname)) {
                 count++;
+                index = i;
             }
         }
 
         if (count > 1) {
             System.out.println("В списке найдено несколько актёров с фамилией " + surname + ". Замена не выполнена.");
         } else if (count == 1) {
-            for (int i = 0; i < listOfActors.size(); i++) {
-                Actor current = listOfActors.get(i);
-                if (current.getSurname().equals(surname)) {
-                    listOfActors.set(i, newActor);
-                    System.out.println("Заменил: " + current + " на " + newActor);
-                    break;
-                }
-            }
+            listOfActors.set(index, newActor);
+            System.out.println("Заменил: " + listOfActors.get(index) + " на " + newActor);
         } else {
             System.out.println("Актёр с фамилией " + surname + " не найден.");
         }
     }
-
 
     public void printActors() {
         System.out.println("Список актёров спектакля '" + title + "':");
@@ -76,7 +72,7 @@ public class Show {
     }
 
     public void printDirector() {
-        System.out.println("Режиссёр спектакля '" + title + "': " + director );
+        System.out.println("Режиссёр спектакля '" + title + "': " + director);
     }
 
     public String getTitle() {
